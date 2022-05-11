@@ -2,12 +2,14 @@
 
 # Library School
 > Library School is a tool to record what books are in the library and who borrows them. It's allows to:
-- Add new students or teachers.
-- Add new books.
-- Save records of who borrowed a given book and when.
+> - Add new students or teachers.
+> - Add new books.
+> - Save records of who borrowed a given book and when.
+
 
 ## Built With
 - Ruby
+
 
 ## Programming paradigm
 - Object-oriented programming (OOP)
@@ -23,20 +25,18 @@ If not already installed, download and install:
 
 To get a local copy follow these simple example steps.  
 
-1.- Open the terminal window and clone the repository using this command:  
-`git@github.com:ForHemer/School-Library.git` 
-2.- Open the repo by typing : cd `School-Library`
-3.- Install the project's dependencies by running this command:   
-`bundle install`   
-4.- To run a file type in you terminal:
-- `ruby[file_name.rb`
-- or  `irb`, copy the file_name.rb code and paste.  
+- Open the terminal window and clone the repository using this command: `git@github.com:ForHemer/School-Library.git` 
+- Open the repo by typing : `cd School-Library`
+- Install the project's dependencies by running this command: `bundle install`   
+- To run a file type in you terminal:
+    - `ruby[file_name.rb`
+    - or  `irb`, copy the file_name.rb code and paste.  
 
 ## Authors
 👤 **Hemerson Foreste**
 - GitHub: [ForHemer](https://github.com/ForHemer)
 - Twitter: [@HemersonForeste](https://twitter.com/HemersonForeste)
-- [LinkedIn](https://linkedin.com/in/hemerson-foreste-890685197)
+- [LinkedIn](https://linkedin.com/in/hemerson-foreste)
 
 ## 🤝 Contributing
 

@@ -16,7 +16,7 @@ class Person < Nameable
   # Define getter @id
   attr_reader :id
 
-  # Define correct_name method 
+  # Define correct_name method
   def correct_name
     @name
   end

@@ -22,3 +22,13 @@ class CapitalizeDecorator < Decorator
     @name.correct_name.capitalize
   end
 end
+
+class TrimmerDecorator < Decorator
+  def correct_name
+    if @name.correct_name.length > 10
+      @name.correct_name.slice(0, 10)
+    else
+      @name.correct_name
+    end
+  end
+end

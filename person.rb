@@ -1,6 +1,9 @@
-class Person
+require 'decorator'
+
+class Person < Nameable
   # Define constructor
   def initialize(age, name = 'Unknown', parent_permission: true)
+    super()
     @id = Random.rand(1..1_000_000)
     @name = name
     @age = age
@@ -12,6 +15,11 @@ class Person
   attr_accessor :age
   # Define getter @id
   attr_reader :id
+
+  # Define correct_name method
+  def correct_name
+    @name
+  end
 
   # Define private method
   private

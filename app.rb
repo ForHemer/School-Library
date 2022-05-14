@@ -3,7 +3,6 @@ require_relative 'rental'
 require_relative 'teacher'
 require_relative 'student'
 
-# Define list of otions 
 def list_options
   puts 'Welcome to School library App!'
   puts "
@@ -17,7 +16,6 @@ def list_options
     7- Exit"
 end
 
-# Define options
 def options(books, patron, rentals)
   loop do
     list_options

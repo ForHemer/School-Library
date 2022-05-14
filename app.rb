@@ -86,3 +86,18 @@ def create_rental(books, rentals, patron)
   rentals.push(Rental.new(date, patron[person_input], books[book_input]))
   puts 'Rental created successfully.'
 end
+
+# Define create_book method
+def create_book(books)
+  print 'Title: '
+  title = gets.chomp
+  print 'Author: '
+  author = gets.chomp
+  books.push(Book.new(title, author))
+  puts 'Book created successfully.'
+end
+
+# Define patron_list method
+def patrons_list(patrons)
+  patrons.each { |patron| puts "[#{patron.class}] Name: #{patron.name}, ID: #{patron.id}, Age: #{patron.age}" }
+end

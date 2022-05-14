@@ -97,7 +97,21 @@ def create_book(books)
   puts 'Book created successfully.'
 end
 
-# Define patron_list method
+# Define patrons_list method
 def patrons_list(patrons)
   patrons.each { |patron| puts "[#{patron.class}] Name: #{patron.name}, ID: #{patron.id}, Age: #{patron.age}" }
+end
+
+# Define rental_list_by_id method
+def rental_list_by_id(rentals)
+  print 'ID of person: '
+  person_id = gets.chomp.to_i
+  rentals.each do |rental|
+    puts "Date: #{rental.date}, Book: #{rental.book.title} by #{rental.book.author}" if rental.person.id == person_id
+  end
+end
+
+# Define books_list method
+def books_list(books)
+  books.each { |book| puts "Title '#{book.title}', Author #{book.author}" }
 end

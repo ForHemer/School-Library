@@ -1,4 +1,4 @@
-class Classroom  
+class Classroom
   # Define constructor
   def initialize(label)
     @label = label

@@ -1,10 +1,10 @@
-require './Person'
+require_relative 'person'
 
 class Student < Person
   # Define constructor
-  def initialize(specialization)
+  def initialize(age, name, specialization)
     # Call attributes from parent
-    super(age, name: 'Unknown', parent_permission: true)
+    super(age, name: name)
     @specialization = specialization
   end
 

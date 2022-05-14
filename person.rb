@@ -1,4 +1,5 @@
 require 'decorator'
+require 'rental'
 
 class Person < Nameable
   # Define constructor
@@ -8,11 +9,11 @@ class Person < Nameable
     @name = name
     @age = age
     @parent_permission = parent_permission
+    @rentals = []
   end
 
   # Define getters and setters for @name and @age
-  attr_accessor :name
-  attr_accessor :age
+  attr_accessor :name, :age, :rentals
   # Define getter @id
   attr_reader :id
 
@@ -30,5 +31,9 @@ class Person < Nameable
 
   def can_use_services?
     is_of_age? || @parent_permission = true
+  end
+
+  def add_rental(date, book)
+    Rental.new(date, book, self)
   end
 end

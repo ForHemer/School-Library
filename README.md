@@ -38,6 +38,11 @@ To get a local copy follow these simple example steps.
 - Twitter: [@HemersonForeste](https://twitter.com/HemersonForeste)
 - [LinkedIn](https://linkedin.com/in/hemerson-foreste)
 
+👤 **Leonardo Pires Goss**
+- GitHub: [leopiresgoss](https://github.com/leopiresgoss)
+- Twitter: [@leonardopgoss](https://twitter.com/leonardopgoss)
+- [LinkedIn](https://www.linkedin.com/in/leonardogoss/)
+
 ## 🤝 Contributing
 
 Contributions, issues, and feature requests are welcome!

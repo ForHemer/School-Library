@@ -1,9 +1,9 @@
 require_relative 'app'
 
 def main
-  myApp = App.new
-  myApp.display_welcome()
-  myApp.options()
+  myapp = App.new
+  myapp.display_welcome
+  myapp.options
 end
 
 main

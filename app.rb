@@ -25,7 +25,7 @@ class App
       6- List all rentals for a given person id
       7- Exit"
   end
-  
+
   def options
     loop do
       list_options
@@ -48,7 +48,7 @@ class App
       end
     end
   end
-  
+
   # Define create_person method
   def create_person(patron)
     print 'Do you want to create a student (1) or a teacher (2): '
@@ -85,26 +85,26 @@ class App
     specialization = gets.chomp
     patron.push(Teacher.new(age, name, specialization))
   end
-  
+
   # Define create_rental method
   def create_rental(books, rentals, patron)
     puts 'Select a book from the following list by number'
     books.each_with_index { |book, index| puts "#{index}) Title: '#{book.title}', Author: #{book.author}" }
     book_input = gets.chomp.to_i
-  
+
     puts 'Select a person from the following list by number (Not ID): '
     patron.each_with_index do |person, index|
       puts "#{index}) [#{person.class}] Name: #{person.name}, ID: #{person.id}, Age: #{person.age}"
     end
     person_input = gets.chomp.to_i
-  
+
     print 'Date: '
     date = gets.chomp
-  
+
     rentals.push(Rental.new(date, patron[person_input], books[book_input]))
     puts 'Rental created successfully.'
   end
-  
+
   # Define create_book method
   def create_book(books)
     print 'Title: '
@@ -114,12 +114,12 @@ class App
     books.push(Book.new(title, author))
     puts 'Book created successfully.'
   end
-  
+
   # Define patrons_list method
   def patrons_list(patrons)
     patrons.each { |patron| puts "[#{patron.class}] Name: #{patron.name}, ID: #{patron.id}, Age: #{patron.age}" }
   end
-  
+
   # Define rental_list_by_id method
   def rental_list_by_id(rentals)
     print 'ID of person: '
@@ -128,9 +128,9 @@ class App
       puts "Date: #{rental.date}, Book: #{rental.book.title} by #{rental.book.author}" if rental.person.id == person_id
     end
   end
-  
+
   # Define books_list method
   def books_list(books)
     books.each { |book| puts "Title '#{book.title}', Author #{book.author}" }
-  end  
+  end
 end

@@ -10,8 +10,11 @@ class App
     @patron = []
   end
 
-  def list_options
+  def display_welcome
     puts 'Welcome to School library App!'
+  end
+
+  def list_options
     puts "
       Please choose an option by entering a number:
       1- List all books
@@ -23,7 +26,7 @@ class App
       7- Exit"
   end
   
-  def options()
+  def options
     loop do
       list_options
       option = gets.chomp.to_i
@@ -56,21 +59,31 @@ class App
     name = gets.chomp
     case choice
     when 1
-      print 'Has parent permission? [Y/N]: '
-      input = gets.chomp
-      case input.upcase
-      when 'Y'
-        permission = true
-      when 'N'
-        permission = false
-      end
-      patron.push(Student.new(age, name: name, parent_permission: permission))
+      create_student(patron, age, name)
     when 2
-      print 'Specialization: '
-      specialization = gets.chomp
-      patron.push(Teacher.new(specialization, age, name))
+      create_teacher(patron, age, name)
     end
     puts 'Person created successfully.'
+  end
+
+  # Create Student
+  def create_student(patron, age, name)
+    print 'Has parent permission? [Y/N]: '
+    input = gets.chomp
+    case input.upcase
+    when 'Y'
+      permission = true
+    when 'N'
+      permission = false
+    end
+    patron.push(Student.new(age, name: name, parent_permission: permission))
+  end
+
+  # Create Teacher
+  def create_teacher(patron, age, name)
+    print 'Specialization: '
+    specialization = gets.chomp
+    patron.push(Teacher.new(age, name, specialization))
   end
   
   # Define create_rental method

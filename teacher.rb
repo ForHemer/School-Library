@@ -1,6 +1,6 @@
 require_relative 'person'
 
-class Student < Person
+class Teacher < Person
   # Define constructor
   def initialize(age, name, specialization)
     # Call attributes from parent

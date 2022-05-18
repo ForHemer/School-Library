@@ -2,10 +2,11 @@ require_relative 'book'
 require_relative 'rental'
 require_relative 'teacher'
 require_relative 'student'
+require_relative 'books_manager'
 
 class App
   def initialize
-    @books = []
+    @books = BooksManager.new.create_books
     @rentals = []
     @patron = []
   end
@@ -112,6 +113,7 @@ class App
     print 'Author: '
     author = gets.chomp
     books.push(Book.new(title, author))
+    BooksManager.new.extract_books(books)
     puts 'Book created successfully.'
   end
 

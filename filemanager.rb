@@ -4,24 +4,22 @@ class FileManager
   attr_reader :data
 
   def initialize(file_path)
-    @data = []
+    check_file(file_path)
     @file_path = file_path
+    @data = fetch(file_path)
   end
 
   # Check if file exists
-  def check_file
-    unless File.exists?(@file_path)
-      File.write(@file_path, '[]')
-    end
+  def check_file(file_path)
+    File.write(file_path, '[]') unless File.exist?(file_path)
   end
 
   # Fetch data from the file
-  def fetch
-    file = File.read(@file_path)
-    @data = JSON.parse(file)
-    @data
+  def fetch(file_path)
+    file = File.read(file_path)
+    JSON.parse(file)
   end
-  
+
   # Save array => json file
   def save(array)
     @data = array

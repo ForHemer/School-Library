@@ -6,18 +6,16 @@ class StudentManager < FileManager
     super('data/students.json')
   end
 
-  def extract_students(students)
-    new_data = []
-    students.each do |student|
-      new_data << { age: student.age, name: student.name, parent_permission: student.parent_permission }
-    end
-    save(new_data)
+  def save_student(student)
+    @data << { id: student.id, age: student.age, name: student.name, parent_permission: student.parent_permission }
+    save
   end
 
-  def create_students
+  def fetch_students
     students = []
     @data.each do |student|
-      students << Student.new(student['age'], student['name'], student['parent_permission'])
+      students << Student.new(student['age'], name: student['name'], parent_permission: student['parent_permission'],
+                                              id: student['id'])
     end
     students
   end

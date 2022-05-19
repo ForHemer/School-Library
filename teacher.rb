@@ -2,9 +2,9 @@ require_relative 'person'
 
 class Teacher < Person
   # Define constructor
-  def initialize(age, name, specialization)
+  def initialize(age, name, specialization, id: nil)
     # Call attributes from parent
-    super(age, name: name)
+    super(age, name: name, id: id)
     @specialization = specialization
   end
 

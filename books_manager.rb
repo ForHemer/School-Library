@@ -6,15 +6,12 @@ class BooksManager < FileManager
     super('data/books.json')
   end
 
-  def extract_books(books)
-    new_data = []
-    books.each do |book|
-      new_data << { title: book.title, author: book.author }
-    end
-    save(new_data)
+  def save_book(book)
+    @data << { title: book.title, author: book.author }
+    save
   end
 
-  def create_books
+  def fetch_books
     books = []
     @data.each do |book|
       books << Book.new(book['title'], book['author'])

@@ -3,12 +3,14 @@ require_relative 'rental'
 require_relative 'teacher'
 require_relative 'student'
 require_relative 'books_manager'
+require_relative 'student_manager'
+require_relative 'teacher_manager'
 
 class App
   def initialize
-    @books = BooksManager.new.create_books
+    @books = BooksManager.new.fetch_books
+    @patron = link_people
     @rentals = []
-    @patron = []
   end
 
   def display_welcome
@@ -50,6 +52,13 @@ class App
     end
   end
 
+  # Join teachers and students in one patron
+  def link_people
+    result = []
+    result.push(*StudentManager.new.fetch_students)
+    result.push(*TeacherManager.new.fetch_teachers)
+  end
+
   # Define create_person method
   def create_person(patron)
     print 'Do you want to create a student (1) or a teacher (2): '
@@ -77,14 +86,18 @@ class App
     when 'N'
       permission = false
     end
-    patron.push(Student.new(age, name: name, parent_permission: permission))
+    student = Student.new(age, name: name, parent_permission: permission)
+    patron.push(student)
+    StudentManager.new.save_student(student)
   end
 
   # Create Teacher
   def create_teacher(patron, age, name)
     print 'Specialization: '
     specialization = gets.chomp
-    patron.push(Teacher.new(age, name, specialization))
+    teacher = Teacher.new(age, name, specialization)
+    patron.push(teacher)
+    TeacherManager.new.save_teacher(teacher)
   end
 
   # Define create_rental method
@@ -112,8 +125,9 @@ class App
     title = gets.chomp
     print 'Author: '
     author = gets.chomp
-    books.push(Book.new(title, author))
-    BooksManager.new.extract_books(books)
+    book = Book.new(title, author)
+    books.push(book)
+    BooksManager.new.save_book(book)
     puts 'Book created successfully.'
   end
 

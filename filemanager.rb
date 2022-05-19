@@ -21,9 +21,8 @@ class FileManager
   end
 
   # Save array => json file
-  def save(array)
-    @data = array
-    json = JSON.generate(array)
+  def save
+    json = JSON.generate(@data)
     File.write(@file_path, json)
   end
 end

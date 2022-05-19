@@ -1,3 +1,5 @@
+require_relative 'rental'
+
 class Book
   # Define constructor
   def initialize(title, author)

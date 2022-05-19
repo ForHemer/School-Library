@@ -2,12 +2,16 @@ require_relative 'book'
 require_relative 'rental'
 require_relative 'teacher'
 require_relative 'student'
+require_relative 'books_manager'
+require_relative 'student_manager'
+require_relative 'teacher_manager'
+require_relative 'rentals_manager'
 
 class App
   def initialize
-    @books = []
-    @rentals = []
-    @patron = []
+    @books = BooksManager.new.fetch_books
+    @patron = link_people
+    @rentals = RentalsManager.new.fetch_rentals(@books, @patron)
   end
 
   def display_welcome
@@ -49,6 +53,13 @@ class App
     end
   end
 
+  # Join teachers and students in one patron
+  def link_people
+    result = []
+    result.push(*StudentManager.new.fetch_students)
+    result.push(*TeacherManager.new.fetch_teachers)
+  end
+
   # Define create_person method
   def create_person(patron)
     print 'Do you want to create a student (1) or a teacher (2): '
@@ -76,14 +87,18 @@ class App
     when 'N'
       permission = false
     end
-    patron.push(Student.new(age, name: name, parent_permission: permission))
+    student = Student.new(age, name: name, parent_permission: permission)
+    patron.push(student)
+    StudentManager.new.save_student(student)
   end
 
   # Create Teacher
   def create_teacher(patron, age, name)
     print 'Specialization: '
     specialization = gets.chomp
-    patron.push(Teacher.new(age, name, specialization))
+    teacher = Teacher.new(age, name, specialization)
+    patron.push(teacher)
+    TeacherManager.new.save_teacher(teacher)
   end
 
   # Define create_rental method
@@ -101,8 +116,9 @@ class App
     print 'Date: '
     date = gets.chomp
 
-    rentals.push(Rental.new(date, patron[person_input], books[book_input]))
-    puts 'Rental created successfully.'
+    rental = Rental.new(date, patron[person_input], books[book_input])
+    rentals.push(rental)
+    RentalsManager.new.save_rental(rental)
   end
 
   # Define create_book method
@@ -111,7 +127,9 @@ class App
     title = gets.chomp
     print 'Author: '
     author = gets.chomp
-    books.push(Book.new(title, author))
+    book = Book.new(title, author)
+    books.push(book)
+    BooksManager.new.save_book(book)
     puts 'Book created successfully.'
   end
 

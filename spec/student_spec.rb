@@ -1,7 +1,7 @@
 require_relative 'spec_helper'
 
 describe Student do
-  # test if Teach obj exist
+  # test if Student obj exist
   before :all do
     @sella = Student.new(35, name: 'Sella', parent_permission: true)
   end

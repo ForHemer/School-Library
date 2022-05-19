@@ -5,12 +5,13 @@ require_relative 'student'
 require_relative 'books_manager'
 require_relative 'student_manager'
 require_relative 'teacher_manager'
+require_relative 'rentals_manager'
 
 class App
   def initialize
     @books = BooksManager.new.fetch_books
     @patron = link_people
-    @rentals = []
+    @rentals = RentalsManager.new.fetch_rentals(@books, @patron)
   end
 
   def display_welcome
@@ -115,8 +116,9 @@ class App
     print 'Date: '
     date = gets.chomp
 
-    rentals.push(Rental.new(date, patron[person_input], books[book_input]))
-    puts 'Rental created successfully.'
+    rental = Rental.new(date, patron[person_input], books[book_input])
+    rentals.push(rental)
+    RentalsManager.new.save_rental(rental)
   end
 
   # Define create_book method

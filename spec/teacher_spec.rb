@@ -3,7 +3,7 @@ require_relative 'spec_helper'
 describe Teacher do
   # test if Teach obj exist
   before :all do
-    @maria = Teacher.new(35, 'Maria','Math')
+    @maria = Teacher.new(35, 'Maria', 'Math')
   end
 
   context '#new' do
@@ -21,5 +21,4 @@ describe Teacher do
   it 'return true if age is greater than 18 is true' do
     expect(@maria.can_use_services?).to be(true)
   end
-
 end

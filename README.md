@@ -31,6 +31,7 @@ To get a local copy follow these simple example steps.
 - To run a file type in you terminal:
     - `ruby[file_name.rb`
     - or  `irb`, copy the file_name.rb code and paste.  
+- To test the project, run `rspec` in your terminal
 
 ## Authors
 👤 **Hemerson Foreste**
